@@ -1,0 +1,22 @@
+
+<!Doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:fragment="site-head"></head>
+<body>
+<header th:fragment="logged-out" th:remove="tag">
+    <header>
+        <a ref="users/login.html" th:href="@{/users/login}">Login</a>
+        <a ref="users/registration.html" th:href="@{/users/registration}">Registration</a>
+    </header>
+</header>
+
+<header th:fragment="logged-in" th:remove="tag">
+    <b>Logged in as :</b>
+    <label th:text="${session.loggeduser.profile.fullName}"></label> |
+    <a href="posts/create.html" th:href="@{posts/create}">Create post</a>
+    <form method="post" th:action="@{/users/logout}">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+</body>
+</html>
